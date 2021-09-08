@@ -70,23 +70,25 @@ int main(void) {
 	char c;
 	int i = 0;
 
-	while(i < 7) {
-		scanf_s("%c %d", &c, &e[i]);
-		if (c == 'i') {
+	while(1) {
+		scanf_s("%c %d", &c, 2, &e[i]);
+		switch (c){
+		case 'i' :
 			insert_max_heap(heap, e[i]);
+			printf("< %d > \n", e[i].key);
 			i++;
-		}
-		else if (c == 'd') {
-			e[i] = delete_max_heap(heap);
-			i++;
-		}
-		else if (c == 'q') {
 			break;
+		case 'd':
+			e[i] = delete_max_heap(heap);
+			printf("< %d > \n", e[i].key);
+			i++;
+			break;
+		case 'q':
+			break;
+			for (i = 0; i < 7; i++) {
+				printf("< %d > \n", e[i].key);
+			}
 		}
-	}
-
-	for (i = 0; i < 7; i++) {
-		printf("< %d > \n", e[i].key);
 	}
 
 	free(heap);
